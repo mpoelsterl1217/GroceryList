@@ -7,6 +7,13 @@
 
 import UIKit
 
+
+class ProtoTableViewCell: UITableViewCell {
+    @IBOutlet weak var NameLabel: UILabel!
+    @IBOutlet weak var IngredientsLabel: UILabel!
+    @IBOutlet weak var itemImage: UIImageView!
+}
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //Globals
@@ -27,9 +34,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "protoCell")
-        cell?.textLabel?.text = groceryList[indexPath.row]
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "protoCell") as! ProtoTableViewCell
+        cell.NameLabel?.text = groceryList[indexPath.row]
+        cell.IngredientsLabel?.text = "foo, bar, foobar"
+        cell.itemImage?.image = UIImage(systemName: "questionmark")
+        return cell
     }
     
     //Actions
